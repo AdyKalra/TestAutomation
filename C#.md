@@ -115,6 +115,8 @@ The most important part of the above code is that all methods return the current
 return this;
 
 Not quietly related to the pattern itself but interesting to point here is the way of choosing the different options. All of them are of type SelectElement. Here are the different settings elements that you can discover in the BingMainPageMap.
+
+
 public SelectElement Sizes
 {
     get
