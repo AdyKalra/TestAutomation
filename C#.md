@@ -8,7 +8,7 @@ The primary goal of the example test for the Fluent Page Object Pattern is going
 3. Switch to Images tab
 4. Change query settings
 
-!(https://automatetheplanet.com/wp-content/uploads/2015/05/fluent-page-objects-test-test-case-1024x315.png)
+![1](https://automatetheplanet.com/wp-content/uploads/2015/05/fluent-page-objects-test-test-case-1024x315.png)
 
 ## Fluent Page Objects Implementation Code
 
@@ -174,21 +174,22 @@ public SelectElement License
 All of them use the same location technique- XPath expression that finds the div by its inner text.
 I believe that it is a poor decision to switch settings through text variable, so in my implementation I use enums.
 * Sample Settings Enum
+
 public enum Dates
 {
-All,
-Past24Hours,
-PastWeek,
-PastMonth,
-PastYear
+    All,
+    Past24Hours,
+    PastWeek,
+    PastMonth,
+    PastYear
 }
 
 This way the chosen enum value represents an integer from 0-4 that is the same as the index of the same values in the select element.
 
 public BingMainPage SetDate(Dates date)
 {
-this.Map.Date.SelectByIndex((int)date);
-return this;
+    this.Map.Date.SelectByIndex((int)date);
+    return this;
 }
 
 ## Create Fluent Page Validator
@@ -198,122 +199,97 @@ In order to keep the method chaining available even after a usage of validation 
 # Not Fluent Version
 
 public class BasePageValidator<M>
-where M : BasePageElementMap, new()
+    where M : BasePageElementMap, new()
 {
-protected M Map
-{
-get
-{
-return new M();
-}
-}
+    protected M Map
+    {
+        get
+        {
+            return new M();
+        }
+    }
 }
 
 ## Fluent Version
 
 public class BasePageValidator<S, M, V>
-where S : BaseFluentPageSingleton<S, M, V>
-where M : BasePageElementMap, new()
-where V : BasePageValidator<S, M, V>, new()
+    where S : BaseFluentPageSingleton<S, M, V>
+    where M : BasePageElementMap, new()
+    where V : BasePageValidator<S, M, V>, new()
 {
-protected S pageInstance;
-public BasePageValidator(S currentInstance)
-{
-this.pageInstance = currentInstance;
-}
-public BasePageValidator()
-{
-}
-protected M Map
-{
-get
-{
-return new M();
-}
-}
-}
+    protected S pageInstance;
 
+    public BasePageValidator(S currentInstance)
+    {
+        this.pageInstance = currentInstance;
+    }
+
+    public BasePageValidator()
+    {
+    }
+
+    protected M Map
+    {
+        get
+        {
+            return new M();
+        }
+    }
+}
 
 All changes are applied to provide us access to the current Page instance, in order to be able to return it every time in our validation methods.
 ## Not Fluent BingMainPageValidator
 
 public class BingMainPageValidator : BasePageValidator<BingMainPageElementMap>
 {
-public void ResultsCount(string expectedCount)
-{
-Assert.IsTrue(this.Map.ResultsCountDiv.Text.Contains(expectedCount), “The results DIV doesn’t contains the specified text.“);
-}
+    public void ResultsCount(string expectedCount)
+    {
+        Assert.IsTrue(this.Map.ResultsCountDiv.Text.Contains(expectedCount), "The results DIV doesn't contains the specified text.");
+    }
 }
 
 ## Fluent BingMainPageValidator
 
 public class BingMainPageValidator : BasePageValidator<BingMainPage, BingMainPageElementMap, BingMainPageValidator>
 {
-public BingMainPage ResultsCount(string expectedCount)
-{
-Assert.IsTrue(this.Map.ResultsCountDiv.Text.Contains(expectedCount), “The results DIV doesn’t contains the specified text.“);
-return this.pageInstance;
-}
+    public BingMainPage ResultsCount(string expectedCount)
+    {
+        Assert.IsTrue(this.Map.ResultsCountDiv.Text.Contains(expectedCount), "The results DIV doesn't contains the specified text.");
+        return this.pageInstance;
+    }
 }
 
 Because of the changes in the BasePageValidator the BagePage classes should be modified to support the new fluent base validator.
 
-public abstract class BaseFluentPageSingleton<S, M> : ThreadSafeNestedContructorsBaseSingleton<S>
-where M : BasePageElementMap, new()
-where S : BaseFluentPageSingleton<S, M>
-{
-protected M Map
-{
-get
-{
-return new M();
-}
-}
-public virtual void Navigate(string url = ““)
-{
-Driver.Browser.Navigate().GoToUrl(string.Concat(url));
-}
-}
-public abstract class BaseFluentPageSingleton<S, M, V> : BaseFluentPageSingleton<S, M>
-where M : BasePageElementMap, new()
-where S : BaseFluentPageSingleton<S, M, V>
-where V : BasePageValidator<S, M, V>, new()
-{
-public V Validate()
-{
-return new V();
-}
-}
-view rawBaseFluentPageSingleton.cs hosted by GitHub
-Fluent Page Objects Usage in Tests
-
 [TestClass]
 public class FluentBingTests
-{
-[TestInitialize]
-public void SetupTest()
-{
-Driver.StartBrowser();
-}
-[TestCleanup]
-public void TeardownTest()
-{
-Driver.StopBrowser();
-}
-[TestMethod]
-public void SearchForImageFuent()
-{
-P.BingMainPage.Instance
-.Navigate()
-.Search(“facebook“)
-.ClickImages()
-.SetSize(Sizes.Large)
-.SetColor(Colors.BlackWhite)
-.SetTypes(Types.Clipart)
-.SetPeople(People.All)
-.SetDate(Dates.PastYear)
-.SetLicense(Licenses.All);
-}
+{ 
+    [TestInitialize]
+    public void SetupTest()
+    {
+        Driver.StartBrowser();
+    }
+
+    [TestCleanup]
+    public void TeardownTest()
+    {
+        Driver.StopBrowser();
+    }
+
+    [TestMethod]
+    public void SearchForImageFuent()
+    {
+        P.BingMainPage.Instance
+                            .Navigate()
+                            .Search("facebook")
+                            .ClickImages()
+                            .SetSize(Sizes.Large)
+                            .SetColor(Colors.BlackWhite)
+                            .SetTypes(Types.Clipart)
+                            .SetPeople(People.All)
+                            .SetDate(Dates.PastYear)
+                            .SetLicense(Licenses.All);
+    }
 }
 
 The fluent page objects significantly improve the readability of tests. Also, it is quite easy to write tests, thanks to the method chaining.
