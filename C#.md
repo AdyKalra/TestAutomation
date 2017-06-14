@@ -1,6 +1,6 @@
-#Fluent Page Object Pattern C# Code
+# Fluent Page Object Pattern C# Code
 
-##Test’s Test Case
+## Test’s Test Case
 
 The primary goal of the example test for the Fluent Page Object Pattern is going to be to search for images in Bing with different settings.
 1. Navigate to Bing site
@@ -10,7 +10,7 @@ The primary goal of the example test for the Fluent Page Object Pattern is going
 
 !(https://automatetheplanet.com/wp-content/uploads/2015/05/fluent-page-objects-test-test-case-1024x315.png)
 
-##Fluent Page Objects Implementation Code
+## Fluent Page Objects Implementation Code
 
 If we don’t use Fluent Page Objects, our test looks like the code below.
 [TestClass]
