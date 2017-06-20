@@ -33,23 +33,26 @@ PM> Install-Package Atata
 # Tutorials 
 * https://www.codeproject.com/Articles/1158365/Atata-New-Test-Automation-Framework
 
-I would like to show the usage of the framework using the demo website. It is simple website that contains the following: Sign In page, Users page, User Details page and User Edit window.
-
-The test project will use the NuGet packages: Atata, Atata.Bootstrap, Selenium.WebDriver, Selenium.Support, WebDriver.ChromeDriver.win32, NUnit and NUnit3TestAdapter.
-
-I use NUnit but it is not required, you can use any .NET testing framework like MSTest or SpecFlow. But for me NUnit fits the best.
-
-Let's try to implement an auto-test for the following test case:
-
-Sign In
-Click "New" button on User List page
-Create a new user
-Verify the new user's data on User List page
-Navigate to the user's details
-Verify the user's details
-
-Any page can be represented with the page object. I will try to explain the Atata's stuff step by step. To start we need to implement the page object class for Sign In page.
-
 # Run Tests
 Build the solution
 Tests -> Run all tests
+
+# Explanation
+
+* I would like to show the usage of the framework using the demo website. It is simple website that contains the following: Sign In page, Users page, User Details page and User Edit window.
+
+* The test project will use the NuGet packages: Atata, Atata.Bootstrap, Selenium.WebDriver, Selenium.Support, WebDriver.ChromeDriver.win32, NUnit and NUnit3TestAdapter.
+
+* I use NUnit but it is not required, you can use any .NET testing framework like MSTest or SpecFlow. But for me NUnit fits the best.
+
+* Let's try to implement an auto-test for the following test case:
+
+1. Sign In
+2. Click "New" button on User List page
+3. Create a new user
+4. Verify the new user's data on User List page
+5. Navigate to the user's details
+6. Verify the user's details
+
+* Any page can be represented with the page object. I will try to explain the Atata's stuff step by step. To start we need to implement the page object class for Sign In page.
+
