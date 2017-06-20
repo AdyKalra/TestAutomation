@@ -20,6 +20,8 @@ Built-in customizable logging and screenshot capturing functionality.
 9. Extensible
 Atata.Bootstrap and Atata.KendoUI packages have a set of ready to use components.
 
+* Download the sampleproject from https://github.com/atata-framework/atata-sample-app-tests
+The Demo Project tests application demonstrates different testing approaches and features of the Atata framework. It uses Atata Sample App (repository) as a testing website and NUnit 3 as a test engine.
 
 # Getting Started
 
