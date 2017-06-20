@@ -19,3 +19,11 @@ Defines the default component search strategies as well as additional settings.
 Built-in customizable logging and screenshot capturing functionality.
 9. Extensible
 Atata.Bootstrap and Atata.KendoUI packages have a set of ready to use components.
+
+
+# Getting Started
+
+## Installation
+
+* To get started just install the Atata NuGet package.
+PM> Install-Package Atata
