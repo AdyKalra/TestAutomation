@@ -6,3 +6,8 @@ In Visual Studio 2017, NuGet and the NuGet Package Manager are automatically ins
 At the top of the pane you can select the desired package source, manage sources (by clicking the gear icon), and select the default project to which commands will be applied:
 Package Manager Console controls
 You can override these settings with most commands by using the -Source and -ProjectName options.
+
+
+# Some nuget packages are missing from this solution. click to restore
+https://stackoverflow.com/questions/27895504/how-do-i-enable-nuget-package-restore-in-visual-studio
+From the menu - Project-> Manage nuget packages
