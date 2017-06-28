@@ -1,3 +1,17 @@
+## Introduction
+* C# (pronounced "SeeSharp") is a simple, modern, object-oriented,and type-safe programming language
+* C# is an object-oriented language, but C# further includes support for component-oriented programming.
+Contemporary software design increasingly relies on softwarecomponents in theform of self-contained and selfdescribing
+packages of functionality. Key to such components is that they presenta programming model with
+properties, methods,and events; they haveattributes that provide declarativeinformation about thecomponent;
+and they incorporatetheir own documentation.
+* Garbagecollection automatically reclaims memory occupied by unreachable unused objects
+* exception handling provides a structured and extensibleapproach to error detection and recovery
+* type-safe design of thelanguage makes it impossibleto read from uninitialized variables, to indexarrays beyond their bounds, or to perform unchecked type casts.
+* C# has a unified typesystem. All C# types, including primitivetypes such as int and double , inherit from a singleroot object type
+* C# sourcefiles typically havethefileextension .cs
+*  Namespaces providea hierarchical means of organizing C# programs and libraries. Namespaces contain types and other namespaces
+
 ## .NET Framework
 
 ###CLR (Common Language Runtime)
