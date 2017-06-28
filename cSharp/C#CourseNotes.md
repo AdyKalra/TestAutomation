@@ -40,3 +40,32 @@ compiles code and transforms it to MSIL (Microsoft Intermediate Language)
 * When C# programs are compiled, they are physically packaged into assemblies. Assemblies typically have the file extension .exe or .dll, depending on whether they implement applications or libraries, respectively.
 
 ## Types and variables 
+* There are two kinds of types in C#: value types and reference types.
+* Variables of value types directly contain their data whereas variables of reference types store references to their data, the latter being known as objects
+* C#’s value types are further divided into simple types, enum types, struct types, and nullable value types. C#’s reference types are further divided into class types, interface types, array types, and delegate types.
+###The following provides an overview of C#’s type system.
+* Value types
+   * Simple Types
+      * Signed integral: sbyte, short, int, long
+      * Unsigned integral: byte, ushort, uint, ulong
+      * Unicode characters: char
+      * IEEE floating point: float, double
+      * High-precision decimal: decimal
+      * Boolean: bool
+   * Enum types
+      * User-defined types of the form enum E {...}
+   * Struct types
+      * User-defined types of the form struct S {...}
+   * Nullable value types
+      * Extensions of all other value types with a null value
+ * Reference types
+    * Class types
+       * Ultimate base class of all other types: object
+       * Unicode strings: string
+       * User-defined types of the form class C {...}
+    * Interface types
+       * User-defined types of the form interface I {...}
+    * Array types
+       * Single- and multi-dimensional, for example, int[] and int[,]
+    * Delegate types
+       * User-defined types of the form delegate int D(...)
